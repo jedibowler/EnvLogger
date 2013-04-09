@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GTM.Seeed.TemperatureHumidity</name>
+    </assembly>
+    <members>
+        <member name="T:Gadgeteer.Modules.Seeed.TemperatureHumidity">
+            <summary>
+            A TemperatureHumidity module for Microsoft .NET Gadgeteer
+            </summary>
+        </member>
+        <member name="M:Gadgeteer.Modules.Seeed.TemperatureHumidity.#ctor(System.Int32)">
+            <summary></summary>
+            <param name="socketNumber">The socket that this module is plugged in to.</param>
+        </member>
+        <member name="M:Gadgeteer.Modules.Seeed.TemperatureHumidity.RequestMeasurement">
+            <summary>
+            Begins a sensor measurement and raises the <see cref="E:Gadgeteer.Modules.Seeed.TemperatureHumidity.MeasurementComplete"/> event when done.
+            </summary>
+            <remarks>
+            To prevent the sensor from overheating, there is approximately a 3.6 second wait after each measurement.
+            If you call this method repeatedly in a shorter time span, your requests are not queued. 
+            Use the <see cref="M:Gadgeteer.Modules.Seeed.TemperatureHumidity.StartContinuousMeasurements"/> method to obtain continuous measurements.
+            </remarks>
+        </member>
+        <member name="M:Gadgeteer.Modules.Seeed.TemperatureHumidity.StartContinuousMeasurements">
+            <summary>
+            Starts continuous measurements.
+            </summary>
+            <remarks>
+            <para>
+             When you call this method, the <see cref="T:Gadgeteer.Modules.Seeed.TemperatureHumidity"/> sensor takes a measurement, 
+             raises the <see cref="E:Gadgeteer.Modules.Seeed.TemperatureHumidity.MeasurementComplete"/> event when the measurement is complete, and repeats.
+             To stop continuous measurements, call the <see cref="M:Gadgeteer.Modules.Seeed.TemperatureHumidity.StopContinuousMeasurements"/> method.
+            </para>
+            <note>
+             To prevent the sensor from overheating, there is approximately a 3.6 second wait between measurements.
+            </note>
+            </remarks>
+        </member>
+        <member name="M:Gadgeteer.Modules.Seeed.TemperatureHumidity.StopContinuousMeasurements">
+            <summary>
+            Stops continuous measurements.
+            </summary>
+            <remarks>
+            When you call the <see cref="M:Gadgeteer.Modules.Seeed.TemperatureHumidity.StartContinuousMeasurements"/> method, the <see cref="T:Gadgeteer.Modules.Seeed.TemperatureHumidity"/> sensor takes a measurement, 
+            raises the <see cref="E:Gadgeteer.Modules.Seeed.TemperatureHumidity.MeasurementComplete"/> event when the measurement is complete, and repeats.
+            Call this method to stop continuous measurements.
+            </remarks>
+        </member>
+        <member name="M:Gadgeteer.Modules.Seeed.TemperatureHumidity.BoolArrayToInt(System.Boolean[],System.Boolean)">
+            <summary>
+            Returns the integer value represented by an array of Boolean values.
+            </summary>
+            <param name="boolArray">The array to get the integer value of.</param>
+            <param name="zeroIndexLeastSignificant">
+             <b>true</b> if the first index of the array (0) holds the least significant portion
+             of the value represented by the entire array; otherwise, <b>false</b>.
+            </param>
+            <returns>The integer value represented by <paramref name="boolArray"/></returns>
+            <remarks>
+            This method treats <paramref name="boolArray"/> as a binary representation of an integer value.
+            When <paramref name="zeroIndexLeastSignificant"/> is <b>true</b>, the first index of <paramref name="boolArray"/> (0)
+            holds the least significant bit, the second index (1) holds the next significant bit, and so on. 
+            When <paramref name="zeroIndexLeastSignificant"/> is <b>false</b>, this is reversed; the last index of <paramref name="boolArray"/>
+            holds the least significant bit, the second to the last index holds the next significant bit, and so on.
+            </remarks>
+        </member>
+        <member name="M:Gadgeteer.Modules.Seeed.TemperatureHumidity.OnMeasurementCompleteEvent(Gadgeteer.Modules.Seeed.TemperatureHumidity,System.Double,System.Double)">
+            <summary>
+            Raises the <see cref="E:Gadgeteer.Modules.Seeed.TemperatureHumidity.MeasurementComplete"/>event.
+            </summary>
+            <param name="sender">The <see cref="T:Gadgeteer.Modules.Seeed.TemperatureHumidity"/> object that raised the event.</param>
+            <param name="temperature">The measured temperature.</param>
+            <param name="relativeHumidity">The measured humidity.</param>
+        </member>
+        <member name="E:Gadgeteer.Modules.Seeed.TemperatureHumidity.MeasurementComplete">
+            <summary>
+            Raised when a temperature and humidity measurement is complete.
+            </summary>
+        </member>
+        <member name="T:Gadgeteer.Modules.Seeed.TemperatureHumidity.MeasurementCompleteEventHandler">
+            <summary>
+            Represents the delegate that is used for the <see cref="E:Gadgeteer.Modules.Seeed.TemperatureHumidity.MeasurementComplete"/>event.
+            </summary>
+            <param name="sender">The <see cref="T:Gadgeteer.Modules.Seeed.TemperatureHumidity"/> object that raised the event.</param>
+            <param name="temperature">The measured temperature.</param>
+            <param name="relativeHumidity">The measured humidity.</param>
+        </member>
+    </members>
+</doc>
